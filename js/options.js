@@ -22,6 +22,7 @@ function save_options(){
 	localStorage['pdurl'] = getId('pdurl').value;
 	localStorage['timercheck'] = getId('timercheck').checked;
 	localStorage.default_pattern = getId('defaultPattern').value;
+	localStorage.request_url = encodeURIComponent(decodeURIComponent(getId('requestURL').value));
 
 
 	if(getId('timer01').checked) {
@@ -154,6 +155,16 @@ function play_sound() {
 	}
 }
 
+function request_url() {
+  //var image = new Image(); 
+  //image.src = getId('requestURL').value;
+  fetch(getId('requestURL').value)
+    .then(function(response) {})
+    .catch(function(error) {
+      console.log('Fetch Error: -S', error) 
+    });
+}
+
 function pause_sound() {
 	sound.pause();
 }
@@ -173,6 +184,7 @@ function pause_sound_with_fadeout(sound) {
 
 function init() {
 	getId('test-play').onclick = play_sound;
+    getId('test-url').onclick = request_url;
 	var soundoptions = document.getElementsByClassName('pmsound');
 	[].forEach.call(soundoptions, function (soundoption) {
 		soundoption.onclick = play_sound;

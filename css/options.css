@@ -381,3 +381,8 @@ td.list { line-height: 1.25; }
 #defaultPattern{
     width: 200px;
 }
+
+
+#requestURL{
+    width: 300px;
+}
